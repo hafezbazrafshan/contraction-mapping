@@ -7,5 +7,5 @@ This set of MATLAB codes numerically verify that the Z-Bus method is a contracti
 2) M. Bazrafshan and N. Gatsis, ``On the solution of the three-phase load-flow in distribution networks," in Proc. Asilomar Conference on Signals, Systems, and Computers,  Nov. 2016.
 
 3) M. Bazrafshan and N. Gatsis ``Convergence of the Z-Bus method and existence of unique solution in single-phase distribution
-load-flow," in Proc. Global Conference on Signal and Information Processing, Dec. 2016.  Available online at 
+load-flow," in Proc. Global Conference on Signal and Information Processing, Dec. 2016.  Available online at https://sigport.org/sites/default/files/docs/globalsip.pdf
 
