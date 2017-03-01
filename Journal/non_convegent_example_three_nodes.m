@@ -3,17 +3,17 @@ clc;
 
 vS=[1;exp(-j*2*pi/3);exp(j*2*pi/3)];
 
-sL1a=0.8+0.5i;
-sL1b=0.8+0.5i;
-sL1c=0.8+0.5i;
+sL1a=0.7+1.5i;
+sL1b=0.8+1.5i;
+sL1c=0.8+2.5i;
 sL1=[sL1a;sL1b;sL1c];
 
-sL2a=0.6+0.5i;
+sL2a=0.6+2.5i;
 sL2b=0.6+0.5i;
-sL2c=0.6+0.5i;
+sL2c=0.3+0.5i;
 sL2=[sL2a;sL2b;sL2c];
 
-sL=0.85*[sL1;sL2];
+sL=[sL1;sL2];
 
 y1S=0.077-5.33i;
 y12=0.056-8.66i;

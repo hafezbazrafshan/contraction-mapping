@@ -31,7 +31,7 @@ maxIt=21;
 Z=inv(Y); 
 w=-Z*Y_NS*vS;
 
-theta=[1;0.8;0.5;0.3;0.25;0.2294];
+theta=[1;0.8;0.5;0.3;0.25;0.23];
 
 CPQ=max( sum( abs(Z*diag(sL)*diag(1./w)),2)); 
 K=1./min(abs(w));
@@ -229,7 +229,7 @@ set(currentAxes,'FontName','Times New Roman');
 ylabel('$\| \mathbf{v}[t+1]- \mathbf{v}[t]\|_{\infty}$'); 
 yLabel=get(currentAxes,'yLabel');
 set(yLabel,'Position',get(yLabel,'Position')-[1.5 0 0]);
-legendTEXT=legend([h1, h2, h3,h4,h5,h6], '$\theta=1$', '$\theta=0.8$', '$\theta=0.5$', '$\theta=0.3$', '$\theta=0.25$','$\theta=\theta^*=0.2294$');
+legendTEXT=legend([h1, h2, h3,h4,h5,h6], '$\theta=1$', '$\theta=0.8$', '$\theta=0.5$', '$\theta=0.3$', '$\theta=0.25$','$\theta=0.23$');
 set(legendTEXT,'interpreter','Latex'); 
 set(legendTEXT,'fontSize',14); 
 set(legendTEXT,'fontname','Times New Roman');
