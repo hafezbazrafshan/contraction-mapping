@@ -31,7 +31,7 @@ maxIt=21;
 Z=inv(Y); 
 w=-Z*Y_NS*vS;
 
-theta=[1;0.8;0.7;0.55;0.21];
+theta=[1;0.8;0.5;0.3;0.25;0.2294];
 
 CPQ=max( sum( abs(Z*diag(sL)*diag(1./w)),2)); 
 K=1./min(abs(w));
@@ -129,7 +129,7 @@ fv=-conj(sLPlot4./vSol4);
 err4(end)=max(abs(fv-Y*vSol4-Y_NS*vS)); 
 
 
-%% Plot4
+%% Plot5
 vIterations5=zeros(6,maxIt); 
 vIterations5(:,1)=w;
 err5=zeros(maxIt,1);
@@ -151,6 +151,28 @@ fv=-conj(sLPlot5./vSol5);
 err5(end)=max(abs(fv-Y*vSol5-Y_NS*vS));
 
 
+%% Plot 6
+vIterations6=zeros(6,maxIt); 
+vIterations6(:,1)=w;
+err6=zeros(maxIt,1);
+
+sLPlot6=theta(6)*sL;
+for it=2:maxIt
+    
+    
+    fv=-conj(sLPlot6./vIterations6(:,it-1));
+    err6(it-1)= max(abs(fv-Y*vIterations6(:,it-1)-Y_NS*vS)); 
+    str=[num2str(err6(it-1)), '\n']; 
+    fprintf(str);
+    vIterations6(:,it)=  (Y)\ (fv-Y_NS*vS);
+    
+    
+end
+vSol6=vIterations6(:,end); 
+fv=-conj(sLPlot6./vSol6);
+err6(end)=max(abs(fv-Y*vSol6-Y_NS*vS));
+
+
 %% PLots
 
 x0=2;
@@ -170,9 +192,12 @@ hold on
  hold on;
  h3= plot(0:maxIt-1,log10(err3(1:maxIt)) , 'g-^','lineWidth',2);
  hold on;
- h4=plot(0:maxIt-1,log10(err4(1:maxIt)),'m-v','lineWidth',2);
+ h4=plot(0:maxIt-1,log10(err4(1:maxIt)),'m--v','lineWidth',2);
  hold on;
  h5= plot(0:maxIt-1,log10(err5(1:maxIt)) , 'k-*','lineWidth',2);
+ hold on; 
+  h6= plot(0:maxIt-1,log10(err6(1:maxIt)) , 'c--x','lineWidth',2);
+
 hold on
 
  
@@ -182,11 +207,11 @@ currentAxes=get(threeNodeFigure,'CurrentAxes');
 set(0,'defaulttextinterpreter','latex')
 set(currentAxes,'XTick',0:2:maxIt-1);
 set(currentAxes,'XtickLabels',0:2:maxIt-1);
-set(currentAxes,'YTick',[floor(min(min(log10([err1; err2;err3;err4;err5])))):1:ceil(max(max(log10([err1;err2;err3;err4;err5]))))]);
-YTickLabelSet=floor(min(min(log10([err1; err2;err3;err4;err5])))):1:ceil(max(max(log10([err1;err2;err3;err4;err5]))));
+set(currentAxes,'YTick',[floor(min(min(log10([err1; err2;err3;err4;err5;err6])))):1:ceil(max(max(log10([err1;err2;err3;err4;err5;err6]))))]);
+YTickLabelSet=floor(min(min(log10([err1; err2;err3;err4;err5;err6])))):1:ceil(max(max(log10([err1;err2;err3;err4;err5;err6]))));
 set(currentAxes,'YTickLabel',[]);
 xlim([0 maxIt-1]);
- ylim([floor(min(log10([err1; err2;err3;err4;err5])))-1 ceil(max(log10([err1;err2;err3;err4;err5])))+1]);
+ ylim([floor(min(log10([err1; err2;err3;err4;err5;err6])))-1 ceil(max(log10([err1;err2;err3;err4;err5;err6])))+1]);
 HorizontalOffset = 0.05;
 ax=axis;
 yTicks=get(currentAxes,'YTick');
@@ -204,7 +229,7 @@ set(currentAxes,'FontName','Times New Roman');
 ylabel('$\| \mathbf{v}[t+1]- \mathbf{v}[t]\|_{\infty}$'); 
 yLabel=get(currentAxes,'yLabel');
 set(yLabel,'Position',get(yLabel,'Position')-[1.5 0 0]);
-legendTEXT=legend([h1, h2, h3,h4,h5], '$\theta=1$', '$\theta=0.9$', '$\theta=0.85$', '$\theta=0.75$', '$\theta=0.6$');
+legendTEXT=legend([h1, h2, h3,h4,h5,h6], '$\theta=1$', '$\theta=0.8$', '$\theta=0.5$', '$\theta=0.3$', '$\theta=0.25$','$\theta=\theta^*=0.2294$');
 set(legendTEXT,'interpreter','Latex'); 
 set(legendTEXT,'fontSize',14); 
 set(legendTEXT,'fontname','Times New Roman');
