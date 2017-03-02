@@ -2,9 +2,9 @@ clear all;
 clc;
 close all;
 cd('Case Studies'); 
-IEEE13=load('IEEE13YBUSdata'); 
-IEEE37=load('IEEE37YBUSdata'); 
-IEEE123=load('IEEE123YBUSdata'); 
+IEEE13=load('IEEE13data'); 
+IEEE37=load('IEEE37data'); 
+IEEE123=load('IEEE123data'); 
 cd('..'); 
 
 [ validRangeIEEE13, alphaTheoryVecIEEE13 ] = calculateRegions( IEEE13 ); 
@@ -39,7 +39,7 @@ ylim([0 1])
 set(currentAxes,'fontSize',14); 
 grid on; 
 xlabel('$R$','FontName','Times New Roman'); 
-ylabel('Upper Bound of $\alpha$', 'FontName', 'Times New Roman'); 
+ylabel('Lower bound of contraction modulus $\alpha$', 'FontName', 'Times New Roman'); 
 set(gca,'FontName','Times New Roman');
 legendTEXT=legend([h1, h2, h3], 'IEEE-13', 'IEEE-37', 'IEEE-123');
 set(legendTEXT,'interpreter','Latex'); 

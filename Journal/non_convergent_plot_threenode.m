@@ -1,6 +1,8 @@
 
 vS=[1;exp(-j*2*pi/3);exp(j*2*pi/3)];
 
+vS=[1;exp(-j*2*pi/3);exp(j*2*pi/3)];
+
 sL1a=0.7+1.5i;
 sL1b=0.8+1.5i;
 sL1c=0.8+2.5i;
@@ -16,9 +18,16 @@ sL=[sL1;sL2];
 y1S=0.077-5.33i;
 y12=0.056-8.66i;
 
-Y1S=y1S*eye(3); 
-Y12=y12*eye(3); 
 
+
+Y1S=[y1S, 0.01-0.09i, 0.02-0.08i;
+       0.01-0.09i, 0.087-8i, 0.03-0.07i;
+       0.02-0.08i, 0.03-0.07i, 0.07-1.5i];
+   
+Y12=[y12, 0 0.02-0.07i;
+       0, 0.02-4.8i, 0.03-0.05i;
+       0.02-0.07i, 0.03-0.05i, 0.03-3.8i];      
+   
 Y=[Y1S+Y12 -Y12; -Y12 Y12]; 
 Y_NS=[-Y1S; zeros(3,3)]; 
 
@@ -31,7 +40,7 @@ maxIt=21;
 Z=inv(Y); 
 w=-Z*Y_NS*vS;
 
-theta=[1;0.8;0.5;0.3;0.25;0.23];
+theta=[1;0.5;0.3;0.2;0.12;0.11];
 
 CPQ=max( sum( abs(Z*diag(sL)*diag(1./w)),2)); 
 K=1./min(abs(w));
@@ -229,7 +238,7 @@ set(currentAxes,'FontName','Times New Roman');
 ylabel('$\| \mathbf{v}[t+1]- \mathbf{v}[t]\|_{\infty}$'); 
 yLabel=get(currentAxes,'yLabel');
 set(yLabel,'Position',get(yLabel,'Position')-[1.5 0 0]);
-legendTEXT=legend([h1, h2, h3,h4,h5,h6], '$\theta=1$', '$\theta=0.8$', '$\theta=0.5$', '$\theta=0.3$', '$\theta=0.25$','$\theta=0.23$');
+legendTEXT=legend([h1, h2, h3,h4,h5,h6], '$\theta=1$', '$\theta=0.5$', '$\theta=0.3$', '$\theta=0.2$', '$\theta=0.12$','$\theta=0.11$');
 set(legendTEXT,'interpreter','Latex'); 
 set(legendTEXT,'fontSize',14); 
 set(legendTEXT,'fontname','Times New Roman');
