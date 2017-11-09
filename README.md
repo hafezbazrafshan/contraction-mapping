@@ -1,6 +1,6 @@
 # The contraction mapping project
 
-This set of MATLAB codes numerically verify that the Z-Bus method is a contraction mapping on IEEE distribution test networks.  If you are interested in using this material in your research, we kindly request you to cite the following publications:
+This set of MATLAB codes numerically verify that the Z-Bus method is a contraction mapping on IEEE distribution test networks. Additionally, the Z-Bus load-flow and the Forward-backward sweep load-flow are also implemented.  See also our [three-phase modeling repository](https://github.com/hafezbazrafshan/three-phase-modeling).  If you are interested in using this material in your research, we kindly request you to cite the following publications:
 
 
 1) M. Bazrafshan and N. Gatsis, "Convergence of the Z-Bus Method for Three-Phase Distribution Load-Flow with ZIP Loads," in *IEEE Trans.  Power Syst.*, to be published. doi:10.1109/TPWRS.2017.2703835. See the [arXiv version](https://arxiv.org/pdf/1605.08511.pdf).
